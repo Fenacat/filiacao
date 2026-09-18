@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#141310">
+<title>Ficha de Filiação · FENACAT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#141310;--muted:#6A665C;--line:#CFC9B8;--soft:#F8F5EA;--yellow:#F7CC46;--err:#B3261E}
+*{box-sizing:border-box}
+html,body{margin:0;background:#F3F1EA}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);font-size:16px;line-height:1.4;-webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 40px}
+.road{height:9px;border-radius:0 0 6px 6px;background:repeating-linear-gradient(90deg,var(--yellow) 0 22px,transparent 22px 36px) center/100% 3px no-repeat,var(--ink)}
+.hero{display:flex;gap:14px;align-items:center;padding:18px 0 8px}
+.hero img{width:62px;height:auto;flex:none}
+.pre{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1.25}
+h1{margin:3px 0 4px;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:34px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+h1 span{font-weight:500;color:#3B382F}
+.lead{margin:0;color:#4A463D;font-size:14px}
+.steps{display:flex;gap:6px;margin:12px 0 6px}
+.steps b{flex:1;height:6px;border-radius:3px;background:#DDD8C8}
+.steps b.on{background:var(--yellow)}.steps b.done{background:var(--ink)}
+.stepinfo{display:flex;justify-content:space-between;font-family:"Barlow Condensed",sans-serif;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:13px;color:var(--muted);margin-bottom:10px}
+section.step{display:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px 4px}
+section.step.on{display:block}
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.badge{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--yellow);font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;flex:none}
+h2{margin:0;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.04em;line-height:1}
+.help{margin:0 0 16px 44px;color:var(--muted);font-size:14px}
+.f{margin:0 0 12px}
+.f label{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5F5B50;margin:0 0 5px 2px}
+.f label small{font-family:system-ui,sans-serif;letter-spacing:0;text-transform:none;font-weight:400;color:#8C877A}
+.f input[type=text],.f input[type=tel],.f input[type=email]{width:100%;height:50px;border:1.5px solid var(--line);border-radius:10px;padding:0 14px;font:inherit;font-size:16px;color:var(--ink);background:#fff;outline:none;-webkit-appearance:none}
+.f input:focus{border-color:var(--ink);box-shadow:0 0 0 3px rgba(247,204,70,.45)}
+.f.inv input{border-color:var(--err)}
+.erro{color:var(--err);font-size:13px;margin:4px 0 0 2px;display:none}
+.f.inv .erro{display:block}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row3{grid-template-columns:1fr 1fr 1fr}
+.row .f{margin-bottom:12px}
+@media (max-width:400px){.row3{grid-template-columns:1fr 1fr}}
+.status{font-size:13px;color:var(--muted);margin:-6px 0 12px 2px;min-height:16px}
+.mini{display:inline-flex;align-items:center;height:34px;padding:0 12px;border-radius:8px;border:1.5px solid var(--ink);background:#fff;color:var(--ink);font:600 13px "Barlow Condensed",sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin:-4px 0 12px}
+.chk{display:flex;align-items:center;gap:12px;padding:12px;border:1.5px solid var(--line);border-radius:10px;margin-bottom:8px;font-size:15px;cursor:pointer}
+.chk input{width:24px;height:24px;accent-color:var(--ink);flex:none;margin:0}
+.grp{margin:0 0 14px}
+.grp .t{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5F5B50;margin:0 0 6px 2px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;border-radius:12px;border:0;font:700 17px "Barlow Condensed",sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.btn.pri{background:var(--ink);color:var(--yellow)}
+.btn.sec{background:var(--soft);color:var(--ink);border:1.5px solid var(--line)}
+.btn.link{background:none;color:var(--ink);text-decoration:underline;font-weight:600;height:40px}
+.bar{display:flex;gap:10px;position:sticky;bottom:0;background:#fff;padding:12px 0 14px;margin-top:8px;border-top:1px solid var(--line)}
+.bar .btn{flex:1}
+.pessoa{border-left:4px solid var(--yellow);background:var(--soft);border-radius:10px;padding:12px 12px 2px;margin-bottom:12px}
+.pessoa h3{margin:0 0 10px;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.06em}
+.pessoa h3 small{color:#A88A1B;margin-right:8px;font-size:13px}
+.pessoa input{background:#fff}
+.doc{border:1.5px dashed var(--line);border-radius:12px;padding:12px;margin-bottom:10px;background:#fff}
+.doc h3{margin:0 0 2px;font-size:16px}
+.doc p{margin:0 0 10px;color:var(--muted);font-size:13px}
+.doc .add{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 14px;border-radius:10px;background:var(--ink);color:var(--yellow);font:700 15px "Barlow Condensed",sans-serif;letter-spacing:.05em;text-transform:uppercase;cursor:pointer}
+.doc input[type=file]{display:none}
+.lista{list-style:none;margin:8px 0 0;padding:0}
+.lista li{display:flex;align-items:center;gap:10px;padding:6px 0;border-top:1px solid #EEEAE0;font-size:14px}
+.lista .th{width:44px;height:44px;border-radius:6px;object-fit:cover;background:#EEEAE0;flex:none}
+.lista .pdfico{width:44px;height:44px;border-radius:6px;background:var(--soft);display:flex;align-items:center;justify-content:center;font:700 12px "Barlow Condensed",sans-serif;color:var(--ink);flex:none}
+.lista .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lista .sz{color:var(--muted);font-size:12px}
+.lista button{background:none;border:0;color:var(--err);font-size:24px;line-height:1;cursor:pointer;padding:4px 6px}
+.info{border-left:3px solid var(--line);padding:4px 0 4px 12px;color:#4A463D;font-size:14px;margin:0 0 12px}
+.info b{font-family:"Barlow Condensed",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#8C877A;font-size:12px;margin-right:6px}
+.termo{background:var(--soft);border-radius:12px;padding:12px 14px;font-size:14px;color:#2E2B24;margin-bottom:12px}
+.termo p{margin:0 0 8px}.termo p:last-child{margin:0}
+.termo b{font-family:"Barlow Condensed",sans-serif;letter-spacing:.06em;text-transform:uppercase;font-size:13px}
+.sig{border:1.5px solid var(--line);border-radius:12px;background:#fff;position:relative;touch-action:none;margin-bottom:4px}
+.sig canvas{display:block;width:100%;height:190px;border-radius:12px}
+.sig .linha{position:absolute;left:24px;right:24px;bottom:36px;border-bottom:1px solid #B5AF9E;pointer-events:none}
+.sig .dica{position:absolute;left:0;right:0;bottom:9px;text-align:center;font-size:12px;color:#8C877A;pointer-events:none}
+.sig .limpar{position:absolute;top:8px;right:8px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer}
+.sig.inv{border-color:var(--err)}
+#overlay{position:fixed;inset:0;background:rgba(20,19,16,.88);color:#fff;display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;text-align:center;padding:24px;z-index:50;font-size:15px}
+#overlay.on{display:flex}
+.spin{width:44px;height:44px;border-radius:50%;border:4px solid rgba(255,255,255,.25);border-top-color:var(--yellow);animation:g 1s linear infinite}
+@keyframes g{to{transform:rotate(360deg)}}
+.result{text-align:center;padding:12px 0 6px}
+.result .ok{width:64px;height:64px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:30px}
+.result h2{font-size:28px;margin-bottom:6px}
+.result p{color:#4A463D;margin:0 0 14px}
+.result .btn{margin-bottom:10px}
+.result .env{background:var(--soft);border-radius:12px;padding:12px;font-size:14px;color:#2E2B24;text-align:left;margin:4px 0 14px}
+footer{margin-top:26px;padding-top:12px;border-top:1px solid var(--line);font-size:12px;color:#4A463D;line-height:1.5}
+footer b{font-family:"Barlow Condensed",sans-serif;letter-spacing:.06em;color:var(--ink)}
+.apagar{display:block;text-align:center;margin:18px 0 0;font-size:13px;color:var(--muted)}
+#autotest-out{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="road"></div>
+  <header class="hero">
+    <img src="logo.svg" alt="FENACAT">
+    <div>
+      <div class="pre">Federação Nacional das Associações de Caminhoneiros e Transportadores</div>
+      <h1><span>Ficha de</span> Filiação</h1>
+      <p class="lead">Preencha pelo celular, anexe os documentos e envie. O que você digitar fica salvo neste aparelho.</p>
+    </div>
+  </header>
+
+  <div class="steps" id="steps"><b></b><b></b><b></b><b></b><b></b></div>
+  <div class="stepinfo"><span id="stepnome"></span><span id="stepnum"></span></div>
+
+  <main id="app">
+
+  <!-- ============ 1 ============ -->
+  <section class="step" data-step="1">
+    <div class="sh"><div class="badge">1</div><h2>Dados da associação</h2></div>
+    <p class="help">As informações principais da associação que está se filiando.</p>
+
+    <div class="f"><label>CNPJ da associação</label><input type="tel" name="cnpj" data-pdf="text" data-mask="cnpj" placeholder="00.000.000/0000-00" autocomplete="off"></div>
+    <button type="button" class="mini" id="btn-cnpj">Buscar dados pelo CNPJ</button>
+    <div class="status" id="st-cnpj"></div>
+
+    <div class="f" data-req><label>Nome da associação</label><input type="text" name="nome_associacao" data-pdf="text" autocomplete="organization"><div class="erro">Informe o nome da associação.</div></div>
+    <div class="row">
+      <div class="f"><label>Data de fundação <small>dia/mês/ano</small></label><input type="tel" name="data_fundacao" data-pdf="date" data-mask="data" placeholder="dd/mm/aaaa"></div>
+      <div class="f"><label>Data de filiação <small>dia/mês/ano</small></label><input type="tel" name="data_filiacao" data-pdf="date" data-mask="data" placeholder="dd/mm/aaaa"></div>
+    </div>
+    <div class="f"><label>CEP</label><input type="tel" name="cep" data-pdf="text" data-mask="cep" placeholder="00000-000" autocomplete="postal-code"></div>
+    <div class="status" id="st-cep"></div>
+    <div class="f"><label>Endereço <small>rua, número e complemento</small></label><input type="text" name="endereco" data-pdf="text" autocomplete="street-address"></div>
+    <div class="row">
+      <div class="f"><label>Bairro</label><input type="text" name="bairro" data-pdf="text"></div>
+      <div class="f" data-req><label>Cidade</label><input type="text" name="cidade" data-pdf="text" autocomplete="address-level2"><div class="erro">Informe a cidade.</div></div>
+    </div>
+    <div class="row">
+      <div class="f" data-req><label>Estado (UF)</label><input type="text" name="estado" data-pdf="text" data-mask="uf" maxlength="2" placeholder="SP" autocomplete="address-level1"><div class="erro">Informe a UF.</div></div>
+      <div class="f"><label>Telefone</label><input type="tel" name="telefone" data-pdf="text" data-mask="tel" placeholder="(00) 00000-0000"></div>
+    </div>
+    <div class="f"><label>E-mail da associação</label><input type="email" name="email" data-pdf="text" autocomplete="email" autocapitalize="off"></div>
+    <div class="row">
+      <div class="f"><label>Qtd. de placas</label><input type="tel" name="qtd_placas" data-pdf="text" data-mask="num" placeholder="somente números"></div>
+      <div class="f"><label>Qtd. de associados</label><input type="tel" name="qtd_associados" data-pdf="text" data-mask="num" placeholder="somente números"></div>
+    </div>
+    <div class="grp"><div class="t">Formato</div>
+      <label class="chk"><input type="checkbox" name="formato_rateio" data-pdf="check"> Rateio</label>
+    </div>
+    <div class="grp"><div class="t">A associação possui <small style="text-transform:none;letter-spacing:0;font-weight:400">(marque todas as que tiver)</small></div>
+      <label class="chk"><input type="checkbox" name="possui_taxa_adesao" data-pdf="check"> Taxa de adesão</label>
+      <label class="chk"><input type="checkbox" name="possui_taxa_administrativa" data-pdf="check"> Taxa administrativa</label>
+      <label class="chk"><input type="checkbox" name="possui_fundo_reserva" data-pdf="check"> Fundo de reserva</label>
+    </div>
+    <div class="bar"><button type="button" class="btn pri" data-go="2">Continuar</button></div>
+  </section>
+
+  <!-- ============ 2 ============ -->
+  <section class="step" data-step="2">
+    <div class="sh"><div class="badge">2</div><h2>Responsável na associação</h2></div>
+    <p class="help">A pessoa que cuida dos assuntos administrativos e financeiros junto à FENACAT.</p>
+    <div class="f" data-req><label>Nome completo</label><input type="text" name="responsavel_nome" data-pdf="text" autocomplete="name"><div class="erro">Informe o nome do responsável.</div></div>
+    <div class="f"><label>Cargo ou função</label><input type="text" name="responsavel_cargo" data-pdf="text"></div>
+    <div class="f" data-req><label>Telefone / WhatsApp</label><input type="tel" name="responsavel_telefone" data-pdf="text" data-mask="tel" placeholder="(00) 00000-0000"><div class="erro">Informe um telefone para contato.</div></div>
+    <div class="f"><label>E-mail</label><input type="email" name="responsavel_email" data-pdf="text" autocapitalize="off"></div>
+    <div class="bar"><button type="button" class="btn sec" data-go="1">Voltar</button><button type="button" class="btn pri" data-go="3">Continuar</button></div>
+  </section>
+
+  <!-- ============ 3 ============ -->
+  <section class="step" data-step="3">
+    <div class="sh"><div class="badge">3</div><h2>Dados administrativos</h2></div>
+    <p class="help">A diretoria atual da associação. Preencha os dados de cada integrante.</p>
+    <div class="row">
+      <div class="f"><label>Início do mandato <small>dia/mês/ano</small></label><input type="tel" name="mandato_inicio" data-pdf="date" data-mask="data" placeholder="dd/mm/aaaa"></div>
+      <div class="f"><label>Término do mandato <small>dia/mês/ano</small></label><input type="tel" name="mandato_termino" data-pdf="date" data-mask="data" placeholder="dd/mm/aaaa"></div>
+    </div>
+    <div class="grp"><div class="t">A diretoria é formada por caminhoneiros (TRC)?</div>
+      <label class="chk"><input type="radio" name="trc" value="sim"> Sim</label>
+      <label class="chk"><input type="radio" name="trc" value="nao"> Não</label>
+      <div class="f" style="margin-top:8px"><label>Quantos caminhoneiros na diretoria?</label><input type="tel" name="trc_quantos" data-pdf="text" data-mask="num" placeholder="somente números"></div>
+    </div>
+    <div id="pessoas"></div>
+    <div class="bar"><button type="button" class="btn sec" data-go="2">Voltar</button><button type="button" class="btn pri" data-go="4">Continuar</button></div>
+  </section>
+
+  <!-- ============ 4 ============ -->
+  <section class="step" data-step="4">
+    <div class="sh"><div class="badge">4</div><h2>Documentos</h2></div>
+    <p class="help">Anexe foto ou PDF de cada documento. Pode tirar a foto na hora, uma por página. Tudo vai junto com a ficha, num arquivo só.</p>
+    <div id="docs"></div>
+    <div class="bar"><button type="button" class="btn sec" data-go="3">Voltar</button><button type="button" class="btn pri" data-go="5">Continuar</button></div>
+  </section>
+
+  <!-- ============ 5 ============ -->
+  <section class="step" data-step="5">
+    <div class="sh"><div class="badge">5</div><h2>Autorização e assinatura</h2></div>
+    <p class="help">Leia com atenção antes de assinar.</p>
+    <div class="info"><b>Informativo</b> O Estatuto Social da FENACAT está disponível para consulta em <a href="https://fenacat.org.br" target="_blank" rel="noopener">fenacat.org.br</a>. Recomendamos a leitura atenta, para conhecer os direitos e deveres previstos para as associações filiadas.</div>
+    <div class="termo">
+      <p><b>Uso de dados.</b> As informações das associações e de seus membros estatutários não serão utilizadas para fins de marketing por terceiros. Elas são empregadas exclusivamente para compor dados úteis e necessários aos processos regulatórios das associações, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p>
+      <p><b>Uso de imagem.</b> A associação e seus representantes autorizam o uso de imagem, vídeo e som para a produção de materiais institucionais e publicitários voltados à divulgação da FENACAT e à valorização do setor, bem como a veiculação de sua participação em eventos, congressos, audiências públicas e reuniões de trabalho, inclusive nas redes sociais e demais canais de comunicação da Federação.</p>
+    </div>
+    <div class="f" data-req-check><label class="chk" style="font-weight:600"><input type="checkbox" name="aceite_termo" data-pdf="check"> Li e autorizo o uso de dados e de imagem conforme descrito acima.</label><div class="erro">É preciso marcar a autorização para gerar a ficha.</div></div>
+    <div class="f" data-req><label>Nome completo do presidente</label><input type="text" name="assinatura_nome" data-pdf="text" autocomplete="name"><div class="erro">Informe o nome do presidente.</div></div>
+    <div class="row">
+      <div class="f"><label>Cargo</label><input type="text" name="assinatura_cargo" data-pdf="text" value="Presidente"></div>
+      <div class="f"><label>Data <small>dia/mês/ano</small></label><input type="tel" name="assinatura_data" data-pdf="date" data-mask="data" placeholder="dd/mm/aaaa"></div>
+    </div>
+    <div class="f"><label>Assinatura do presidente <small>assine com o dedo</small></label>
+      <div class="sig" id="sigbox"><canvas id="sig"></canvas><div class="linha"></div><div class="dica">Assine aqui</div><button type="button" class="limpar" id="sig-limpar">Limpar</button></div>
+      <div class="erro" id="sig-erro">Falta a assinatura do presidente.</div>
+    </div>
+    <div class="bar"><button type="button" class="btn sec" data-go="4">Voltar</button><button type="button" class="btn pri" id="btn-gerar">Gerar ficha</button></div>
+  </section>
+
+  <!-- ============ resultado ============ -->
+  <section class="step" data-step="6">
+    <div class="result">
+      <div class="ok">✓</div>
+      <h2>Ficha pronta!</h2>
+      <p id="res-info"></p>
+      <button type="button" class="btn pri" id="btn-share">Enviar pelo WhatsApp ou e-mail</button>
+      <button type="button" class="btn sec" id="btn-baixar">Baixar o PDF</button>
+      <div class="env"><b>Para onde enviar:</b> WhatsApp da FENACAT <b>(11) 94766-3865</b> ou e-mail <b>fenacat@fenacat.org.br</b>. O arquivo já contém a ficha assinada e os documentos anexados.</div>
+      <button type="button" class="btn link" data-go="1">Voltar e corrigir algo</button>
+    </div>
+  </section>
+  </main>
+
+  <a href="#" class="apagar" id="apagar">Apagar tudo e começar de novo</a>
+
+  <footer><b>FENACAT</b> · Federação Nacional das Associações de Caminhoneiros e Transportadores · CNPJ 09.037.940/0001-20<br>
+  Rua Joaquim Nabuco, 441 · Centro · São Bernardo do Campo/SP · CEP 09720-375 · (11) 2203-3257 · fenacat.org.br</footer>
+</div>
+
+<div id="overlay"><div class="spin"></div><div id="ov-msg">Montando a ficha…</div></div>
+<pre id="autotest-out"></pre>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js';document.head.appendChild(s)"></script>
+<script>
+(function(){
+'use strict';
+var $=function(s){return document.querySelector(s)}, $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+var KEY='fenacat-ficha-v1';
+var NOMES=['Dados da associação','Responsável','Dados administrativos','Documentos','Autorização e assinatura','Ficha pronta'];
+var PESSOAS=[['presidente','Presidente'],['vice_presidente','Vice-presidente'],['diretor_financeiro','Diretor financeiro'],['diretor_administrativo','Diretor administrativo'],['responsavel_juridico','Responsável jurídico']];
+var DOCS=[['doc_estatuto','Estatuto Social','Documento completo, com todas as páginas.'],
+          ['doc_regimento','Regimento Interno','Se a associação tiver.'],
+          ['doc_ata','Ata de eleição atualizada','A ata que elegeu a diretoria atual.'],
+          ['doc_cnpj','Cartão CNPJ','Comprovante de inscrição, emitido no site da Receita.'],
+          ['doc_presidente','Documento do presidente','RG ou CNH, frente e verso.'],
+          ['doc_logomarca','Logomarca da associação','Imagem em boa qualidade (PNG ou JPG).']];
+var files={}, step=1, sigDirty=false, pdfBytes=null, pdfName='', drawing=false;
+DOCS.forEach(function(d){files[d[0]]=[]});
+var AUTOTEST=/[?&]autotest=1/.test(location.search);
+
+/* ---------- pessoas e documentos (montados por codigo) ---------- */
+$('#pessoas').innerHTML=PESSOAS.map(function(p,i){var k=p[0];
+  return '<div class="pessoa"><h3><small>0'+(i+1)+'</small>'+p[1]+'</h3>'+
+    '<div class="f"'+(i===0?' data-req':'')+'><label>Nome completo</label><input type="text" name="'+k+'_nome" data-pdf="text" autocomplete="off">'+(i===0?'<div class="erro">Informe o nome do presidente.</div>':'')+'</div>'+
+    '<div class="row"><div class="f"><label>Data de nascimento <small>dia/mês/ano</small></label><input type="tel" name="'+k+'_nascimento" data-pdf="date" data-mask="data" placeholder="dd/mm/aaaa"></div>'+
+    '<div class="f"><label>Telefone / WhatsApp</label><input type="tel" name="'+k+'_telefone" data-pdf="text" data-mask="tel" placeholder="(00) 00000-0000"></div></div>'+
+    '<div class="f"><label>E-mail</label><input type="email" name="'+k+'_email" data-pdf="text" autocapitalize="off"></div></div>'}).join('');
+$('#docs').innerHTML=DOCS.map(function(d){return '<div class="doc" data-doc="'+d[0]+'"><h3>'+d[1]+'</h3><p>'+d[2]+'</p>'+
+  '<label class="add">📎 Adicionar foto ou PDF<input type="file" accept="image/*,application/pdf" multiple></label><ul class="lista"></ul></div>'}).join('');
+
+/* ---------- mascaras ---------- */
+function digits(v){return (v||'').replace(/\D+/g,'')}
+var masks={
+  cnpj:function(v){v=digits(v).slice(0,14);var o=v.slice(0,2);if(v.length>2)o+='.'+v.slice(2,5);if(v.length>5)o+='.'+v.slice(5,8);if(v.length>8)o+='/'+v.slice(8,12);if(v.length>12)o+='-'+v.slice(12,14);return o},
+  cep:function(v){v=digits(v).slice(0,8);return v.length>5?v.slice(0,5)+'-'+v.slice(5):v},
+  tel:function(v){v=digits(v).slice(0,11);if(!v.length)return '';if(v.length<=2)return '('+v;if(v.length<=6)return '('+v.slice(0,2)+') '+v.slice(2);if(v.length<=10)return '('+v.slice(0,2)+') '+v.slice(2,6)+'-'+v.slice(6);return '('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7)},
+  data:function(v){v=digits(v).slice(0,8);if(v.length<=2)return v;if(v.length<=4)return v.slice(0,2)+'/'+v.slice(2);return v.slice(0,2)+'/'+v.slice(2,4)+'/'+v.slice(4)},
+  uf:function(v){return (v||'').replace(/[^a-zA-Z]/g,'').toUpperCase().slice(0,2)},
+  num:function(v){return digits(v).slice(0,7)}
+};
+$$('[data-mask]').forEach(function(el){el.addEventListener('input',function(){el.value=masks[el.getAttribute('data-mask')](el.value)})});
+
+/* ---------- salvar / restaurar ---------- */
+var tmr=null;
+function save(){clearTimeout(tmr);tmr=setTimeout(function(){try{var d={};$$('[name]').forEach(function(el){if(el.type==='checkbox')d[el.name]=el.checked;else if(el.type==='radio'){if(el.checked)d[el.name]=el.value}else d[el.name]=el.value});d.__sig=sigDirty?cv.toDataURL('image/png'):'';d.__step=step;localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}},250)}
+function restore(){try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');$$('[name]').forEach(function(el){if(!(el.name in d))return;if(el.type==='checkbox')el.checked=!!d[el.name];else if(el.type==='radio')el.checked=(d[el.name]===el.value);else el.value=d[el.name]});if(d.__sig){sigPending=d.__sig;sigDirty=true}if(d.__step&&d.__step<6)step=d.__step}catch(e){}}
+document.addEventListener('input',save);document.addEventListener('change',save);
+$('#apagar').addEventListener('click',function(e){e.preventDefault();if(confirm('Apagar tudo o que foi preenchido neste aparelho?')){localStorage.removeItem(KEY);location.reload()}});
+
+/* ---------- etapas ---------- */
+function go(n){step=n;$$('section.step').forEach(function(s){s.classList.toggle('on',+s.getAttribute('data-step')===n)});
+  $$('#steps b').forEach(function(b,i){b.className=(i+1<n||n===6)?'done':(i+1===n?'on':'')});
+  $('#stepnome').textContent=NOMES[n-1]||'';$('#stepnum').textContent=n<6?'Etapa '+n+' de 5':'';
+  window.scrollTo({top:0,behavior:'smooth'});if(n===5)setTimeout(sizeCanvas,60);save()}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-go]');if(b)go(+b.getAttribute('data-go'))});
+
+/* ---------- CEP e CNPJ ---------- */
+function fillIfEmpty(name,val){var el=document.querySelector('[name="'+name+'"]');if(el&&!el.value.trim()&&val){el.value=val;return true}return false}
+function isoToBr(s){var m=/^(\d{4})-(\d{2})-(\d{2})/.exec(s||'');return m?m[3]+'/'+m[2]+'/'+m[1]:''}
+var cepEl=$('[name=cep]');
+cepEl.addEventListener('blur',function(){var c=digits(cepEl.value);if(c.length!==8)return;var st=$('#st-cep');st.textContent='Buscando endereço pelo CEP…';
+  fetch('https://viacep.com.br/ws/'+c+'/json/').then(function(r){return r.json()}).then(function(j){if(j.erro)throw 0;
+    var n=0;n+=fillIfEmpty('endereco',j.logradouro);n+=fillIfEmpty('bairro',j.bairro);n+=fillIfEmpty('cidade',j.localidade);n+=fillIfEmpty('estado',j.uf);
+    st.textContent=n?'Endereço encontrado pelo CEP. Confira e complete o número.':'CEP encontrado.';save()}).catch(function(){st.textContent='CEP não encontrado. Preencha o endereço normalmente.'})});
+$('#btn-cnpj').addEventListener('click',function(){var c=digits($('[name=cnpj]').value),st=$('#st-cnpj');if(c.length!==14){st.textContent='Digite o CNPJ completo (14 números).';return}
+  st.textContent='Buscando na Receita Federal…';
+  fetch('https://brasilapi.com.br/api/cnpj/v1/'+c).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){var n=0;
+    n+=fillIfEmpty('nome_associacao',j.razao_social);n+=fillIfEmpty('data_fundacao',isoToBr(j.data_inicio_atividade));
+    var end=[j.descricao_tipo_de_logradouro,j.logradouro].filter(Boolean).join(' ')+(j.numero?', '+j.numero:'')+(j.complemento?' '+j.complemento:'');
+    n+=fillIfEmpty('endereco',end.trim());n+=fillIfEmpty('bairro',j.bairro);n+=fillIfEmpty('cep',masks.cep(j.cep||''));n+=fillIfEmpty('cidade',j.municipio);n+=fillIfEmpty('estado',j.uf);
+    n+=fillIfEmpty('telefone',masks.tel(j.ddd_telefone_1||''));n+=fillIfEmpty('email',(j.email||'').toLowerCase());
+    st.textContent=n?'Dados encontrados: '+n+' campo(s) preenchido(s). Confira tudo.':'CNPJ encontrado, mas os campos já estavam preenchidos.';save()})
+  .catch(function(){st.textContent='Não foi possível consultar agora. Preencha manualmente.'})});
+
+/* ---------- documentos ---------- */
+function fmt(b){return b>1048576?(b/1048576).toFixed(1)+' MB':Math.max(1,Math.round(b/1024))+' KB'}
+function isPdf(f){return /pdf$/i.test(f.type)||/\.pdf$/i.test(f.name)}
+function renderDoc(k){var box=document.querySelector('[data-doc="'+k+'"] .lista');box.innerHTML=files[k].map(function(f,i){
+  var th=isPdf(f)?'<div class="pdfico">PDF</div>':'<img class="th" src="'+URL.createObjectURL(f)+'" alt="">';
+  return '<li>'+th+'<span class="nm">'+f.name.replace(/</g,'&lt;')+'<br><span class="sz">'+fmt(f.size)+'</span></span><button type="button" data-rm="'+k+':'+i+'" aria-label="Remover">×</button></li>'}).join('')}
+document.addEventListener('change',function(e){var inp=e.target;if(inp.type!=='file')return;var k=inp.closest('.doc').getAttribute('data-doc');
+  Array.prototype.forEach.call(inp.files,function(f){if(!(/^image\//.test(f.type)||isPdf(f))){alert('Envie foto (JPG/PNG) ou PDF. Arquivo não aceito: '+f.name);return}files[k].push(f)});inp.value='';renderDoc(k)});
+document.addEventListener('click',function(e){var b=e.target.closest('[data-rm]');if(!b)return;var p=b.getAttribute('data-rm').split(':');files[p[0]].splice(+p[1],1);renderDoc(p[0])});
+
+/* ---------- assinatura ---------- */
+var cv=$('#sig'),ctx=cv.getContext('2d'),sigPending=null;
+function sizeCanvas(){var r=cv.getBoundingClientRect();if(!r.width)return;var dpr=window.devicePixelRatio||1;var keep=sigDirty?cv.toDataURL('image/png'):null;
+  cv.width=Math.round(r.width*dpr);cv.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineWidth=2.6;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='#141310';
+  var src=sigPending||keep;if(src){var im=new Image();im.onload=function(){ctx.drawImage(im,0,0,r.width,r.height)};im.src=src;sigPending=null}}
+function pos(e){var r=cv.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top]}
+cv.addEventListener('pointerdown',function(e){e.preventDefault();drawing=true;cv.setPointerCapture(e.pointerId);var p=pos(e);ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(p[0]+.1,p[1]+.1);ctx.stroke();sigDirty=true;$('#sigbox').classList.remove('inv');$('#sig-erro').style.display='none'});
+cv.addEventListener('pointermove',function(e){if(!drawing)return;e.preventDefault();var p=pos(e);ctx.lineTo(p[0],p[1]);ctx.stroke()});
+['pointerup','pointercancel','pointerleave'].forEach(function(ev){cv.addEventListener(ev,function(){if(drawing){drawing=false;save()}})});
+$('#sig-limpar').addEventListener('click',function(){ctx.clearRect(0,0,cv.width,cv.height);sigDirty=false;save()});
+window.addEventListener('resize',function(){if(step===5)sizeCanvas()});
+function sigCropped(){var w=cv.width,h=cv.height,d=ctx.getImageData(0,0,w,h).data,x0=w,y0=h,x1=-1,y1=-1;
+  for(var y=0;y<h;y++)for(var x=0;x<w;x++){if(d[(y*w+x)*4+3]>20){if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y}}
+  if(x1<0)return null;var pad=6;x0=Math.max(0,x0-pad);y0=Math.max(0,y0-pad);x1=Math.min(w-1,x1+pad);y1=Math.min(h-1,y1+pad);
+  var c=document.createElement('canvas');c.width=x1-x0+1;c.height=y1-y0+1;c.getContext('2d').drawImage(cv,x0,y0,c.width,c.height,0,0,c.width,c.height);return c.toDataURL('image/png')}
+
+/* ---------- validacao ---------- */
+function validar(){var errs=[];$$('.f[data-req]').forEach(function(f){var inp=f.querySelector('input');var ok=!!inp.value.trim();f.classList.toggle('inv',!ok);if(!ok)errs.push(+f.closest('section').getAttribute('data-step'))});
+  var ac=$('[name=aceite_termo]');var fac=ac.closest('.f');fac.classList.toggle('inv',!ac.checked);if(!ac.checked)errs.push(5);
+  var sok=sigDirty&&!!sigCropped();$('#sigbox').classList.toggle('inv',!sok);$('#sig-erro').style.display=sok?'none':'block';if(!sok)errs.push(5);
+  return errs}
+
+/* ---------- PDF ---------- */
+function clean(s){s=(s||'').normalize('NFC');var o='';for(var i=0;i<s.length;i++){var ch=s[i];var c=ch.charCodeAt(0);o+=(c<256||'‘’“”–—•…€'.indexOf(ch)>=0)?ch:'-'}return o}
+function ov(msg){$('#ov-msg').textContent=msg;$('#overlay').classList.add('on')}
+function toJpeg(file){return new Promise(function(res,rej){var url=URL.createObjectURL(file);var im=new Image();im.onload=function(){var M=1800,w=im.naturalWidth,h=im.naturalHeight,s=Math.min(1,M/Math.max(w,h));w=Math.round(w*s);h=Math.round(h*s);
+  var c=document.createElement('canvas');c.width=w;c.height=h;var x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,w,h);x.drawImage(im,0,0,w,h);
+  c.toBlob(function(b){URL.revokeObjectURL(url);if(!b)return rej(new Error('conv'));b.arrayBuffer().then(res,rej)},'image/jpeg',0.82)};im.onerror=function(){URL.revokeObjectURL(url);rej(new Error('img'))};im.src=url})}
+function fitFont(f,t,font){try{var r=f.acroField.getWidgets()[0].getRectangle();var s=10;while(s>6.5&&font.widthOfTextAtSize(t,s)>r.width-4)s-=0.5;f.setFontSize(s)}catch(e){}}
+
+function gerar(){
+  var errs=validar();if(errs.length){go(Math.min.apply(null,errs));setTimeout(function(){var el=document.querySelector('section.on .inv');if(el)el.scrollIntoView({behavior:'smooth',block:'center'})},350);return Promise.resolve(false)}
+  var L=window.PDFLib;if(!L){alert('A biblioteca do PDF ainda está carregando. Tente de novo em alguns segundos.');return Promise.resolve(false)}
+  ov('Montando a ficha…');var nomeAssoc=$('[name=nome_associacao]').value.trim();var relat={filled:[],anexos:[],paginas:0};
+  return Promise.all([fetch('ficha-fenacat.pdf').then(function(r){if(!r.ok)throw new Error('molde');return r.arrayBuffer()}),fetch('ficha-meta.json').then(function(r){return r.json()})])
+  .then(function(rs){var tpl=rs[0],meta=rs[1];return L.PDFDocument.load(tpl).then(function(pdf){
+    return pdf.embedFont(L.StandardFonts.Helvetica).then(function(helv){return pdf.embedFont(L.StandardFonts.HelveticaBold).then(function(helvB){
+      var form=pdf.getForm();
+      function setT(n,v){try{var f=form.getTextField(n);var t=clean(v||'').trim();f.setText(t);if(t){fitFont(f,t,helv);relat.filled.push(n)}}catch(e){}}
+      function setC(n,on){try{var f=form.getCheckBox(n);if(on){f.check();relat.filled.push(n)}else f.uncheck()}catch(e){}}
+      $$('[name][data-pdf=text]').forEach(function(el){setT(el.name,el.value)});
+      $$('[name][data-pdf=date]').forEach(function(el){var d=digits(el.value);setT(el.name+'_dia',d.slice(0,2));setT(el.name+'_mes',d.slice(2,4));setT(el.name+'_ano',d.slice(4,8))});
+      $$('[name][data-pdf=check]').forEach(function(el){setC(el.name,el.checked)});
+      var trc=($$('[name=trc]').filter(function(r){return r.checked})[0]||{}).value;setC('trc_sim',trc==='sim');setC('trc_nao',trc==='nao');
+      DOCS.forEach(function(d){setC(d[0],files[d[0]].length>0)});
+      var chain=Promise.resolve();
+      var sig=sigCropped();
+      if(sig){chain=chain.then(function(){return pdf.embedPng(sig)}).then(function(png){var a=meta.areas.__assinatura_area;var pg=pdf.getPage(a.pagina);var H=meta.paginas[a.pagina][1];
+        var w=a.x1-a.x0-10,h=a.y1-a.y0-3,s=Math.min(w/png.width,h/png.height),dw=png.width*s,dh=png.height*s;
+        pg.drawImage(png,{x:a.x0+5+(w-dw)/2,y:H-a.y1+1.5+(h-dh)/2,width:dw,height:dh});relat.assinatura=true})}
+      chain=chain.then(function(){form.updateFieldAppearances(helv);form.flatten()});
+      /* anexos */
+      var A4=[595.28,841.89],G=L.rgb(0.08,0.075,0.06),Y=L.rgb(0.97,0.8,0.27),M=L.rgb(0.42,0.4,0.36);
+      function separador(nome,n){var p=pdf.addPage(A4);var top=A4[1];p.drawRectangle({x:40,y:top-52,width:515,height:10,color:G});for(var x=48;x<545;x+=36)p.drawRectangle({x:x,y:top-48.5,width:22,height:3,color:Y});
+        p.drawText('ANEXO',{x:40,y:top-118,size:13,font:helvB,color:M});p.drawText(clean(nome).toUpperCase(),{x:40,y:top-150,size:24,font:helvB,color:G});
+        p.drawText(clean(nomeAssoc||'Associação'),{x:40,y:top-178,size:12,font:helv,color:G});p.drawText(n+(n>1?' arquivos':' arquivo')+' a seguir',{x:40,y:top-196,size:11,font:helv,color:M});
+        p.drawRectangle({x:40,y:top-210,width:60,height:3,color:Y})}
+      function paginaImagem(nome,fname,buf){return pdf.embedJpg(buf).then(function(img){var p=pdf.addPage(A4);p.drawText(clean(nome)+'  ·  '+clean(fname),{x:36,y:A4[1]-30,size:9,font:helv,color:M});
+        var bw=A4[0]-72,bh=A4[1]-90,s=Math.min(bw/img.width,bh/img.height),dw=img.width*s,dh=img.height*s;p.drawImage(img,{x:36+(bw-dw)/2,y:36+(bh-dh)/2,width:dw,height:dh})})}
+      DOCS.forEach(function(d){var k=d[0],nome=d[1],list=files[k];if(!list.length)return;
+        chain=chain.then(function(){ov('Anexando: '+nome+'…');separador(nome,list.length);relat.anexos.push(nome+' ('+list.length+')')});
+        list.forEach(function(f){chain=chain.then(function(){
+          if(isPdf(f))return f.arrayBuffer().then(function(b){return L.PDFDocument.load(b,{ignoreEncryption:true})}).then(function(src){return pdf.copyPages(src,src.getPageIndices())}).then(function(ps){ps.forEach(function(p){pdf.addPage(p)})})
+            .catch(function(){var p=pdf.addPage(A4);p.drawText(clean('Não foi possível ler o PDF "'+f.name+'". Envie este documento em foto ou em outro arquivo.'),{x:40,y:A4[1]-80,size:12,font:helv,color:G})});
+          return toJpeg(f).then(function(buf){return paginaImagem(nome,f.name,buf)}).catch(function(){var p=pdf.addPage(A4);p.drawText(clean('Não foi possível ler a imagem "'+f.name+'".'),{x:40,y:A4[1]-80,size:12,font:helv,color:G})})})})});
+      return chain.then(function(){ov('Finalizando o arquivo…');relat.paginas=pdf.getPageCount();return pdf.save()})})})})})
+  .then(function(bytes){pdfBytes=bytes;pdfName='Ficha de Filiacao FENACAT - '+(nomeAssoc||'associacao').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^\w\s-]/g,'').trim().slice(0,60)+'.pdf';
+    $('#res-info').textContent=relat.paginas+' página(s) · '+fmt(bytes.length)+(bytes.length>20*1048576?' · arquivo grande: prefira o WhatsApp':'');
+    var sh=$('#btn-share');try{sh.style.display=(navigator.canShare&&navigator.canShare({files:[new File([bytes],pdfName,{type:'application/pdf'})]}))?'':'none'}catch(e){sh.style.display='none'}
+    $('#overlay').classList.remove('on');go(6);return relat})
+  .catch(function(e){$('#overlay').classList.remove('on');alert('Não foi possível gerar a ficha ('+(e&&e.message||e)+'). Verifique a conexão e tente de novo.');return false})}
+$('#btn-gerar').addEventListener('click',function(){gerar()});
+function baixar(){var b=new Blob([pdfBytes],{type:'application/pdf'});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download=pdfName;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(u);a.remove()},5000)}
+$('#btn-baixar').addEventListener('click',baixar);
+$('#btn-share').addEventListener('click',function(){var file=new File([pdfBytes],pdfName,{type:'application/pdf'});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){navigator.share({files:[file],title:'Ficha de Filiação FENACAT',text:'Ficha de filiação preenchida'}).catch(function(e){if(e&&e.name!=='AbortError'){baixar()}})}else{baixar()}});
+
+/* ---------- inicio ---------- */
+restore();
+if(!$('[name=assinatura_data]').value){var d=new Date();$('[name=assinatura_data]').value=('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear()}
+go(step);
+
+/* ---------- teste automatico (?autotest=1) — dados ficticios, nada real ---------- */
+if(AUTOTEST){(function(){function v(n,val){var el=document.querySelector('[name="'+n+'"]');if(el)el.value=val}
+  v('cnpj','12.345.678/0001-90');v('nome_associacao','Associação Teste dos Transportadores');v('data_fundacao','05/03/2010');v('data_filiacao','18/09/2026');v('cep','09720-375');v('endereco','Rua de Teste, 100');v('bairro','Centro');v('cidade','São Bernardo do Campo');v('estado','SP');v('telefone','(11) 90000-0001');v('email','teste@exemplo.com.br');v('qtd_placas','128');v('qtd_associados','96');
+  ['formato_rateio','possui_taxa_adesao','possui_fundo_reserva','aceite_termo'].forEach(function(n){document.querySelector('[name="'+n+'"]').checked=true});document.querySelector('[name=trc][value=sim]').checked=true;v('trc_quantos','4');
+  v('responsavel_nome','Maria de Teste da Silva');v('responsavel_cargo','Secretária');v('responsavel_telefone','(11) 90000-0002');v('responsavel_email','maria@exemplo.com.br');v('mandato_inicio','01/01/2025');v('mandato_termino','31/12/2028');
+  PESSOAS.forEach(function(p,i){v(p[0]+'_nome','Diretor Teste '+(i+1));v(p[0]+'_nascimento','1'+i+'/0'+(i+1)+'/197'+i);v(p[0]+'_telefone','(11) 90000-001'+i);v(p[0]+'_email','diretor'+(i+1)+'@exemplo.com.br')});
+  v('assinatura_nome','Diretor Teste 1');
+  go(5);setTimeout(function(){sizeCanvas();ctx.beginPath();for(var i=0;i<60;i++){var x=30+i*4,y=100+Math.sin(i/4)*30;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke();sigDirty=true;
+    var c=document.createElement('canvas');c.width=1200;c.height=800;var x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,1200,800);x.fillStyle='#222';x.font='48px sans-serif';x.fillText('DOCUMENTO DE TESTE (foto)',80,400);
+    c.toBlob(function(b){files.doc_cnpj.push(new File([b],'cartao-cnpj-teste.jpg',{type:'image/jpeg'}));
+      var L=window.PDFLib;L.PDFDocument.create().then(function(t){var f;return t.embedFont(L.StandardFonts.Helvetica).then(function(ff){f=ff;[1,2,3].forEach(function(n){var p=t.addPage([595,842]);p.drawText('ESTATUTO DE TESTE - pagina '+n,{x:60,y:760,size:20,font:f})});return t.save()})})
+      .then(function(bytes){files.doc_estatuto.push(new File([bytes],'estatuto-teste.pdf',{type:'application/pdf'}));return gerar()})
+      .then(function(relat){var b64='';var u=new Uint8Array(pdfBytes);for(var i=0;i<u.length;i+=0x8000)b64+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));
+        $('#autotest-out').textContent=JSON.stringify({ok:!!relat,relat:relat,nome:pdfName,tamanho:pdfBytes.length,b64:btoa(b64)});document.title='AUTOTEST-DONE'})
+      .catch(function(e){$('#autotest-out').textContent=JSON.stringify({ok:false,erro:String(e&&e.stack||e)});document.title='AUTOTEST-FAIL'})},'image/jpeg',0.85)},700)})()}
+})();
+</script>
+</body>
+</html>

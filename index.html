@@ -96,7 +96,6 @@ h2{margin:0;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:
 footer{margin-top:26px;padding-top:12px;border-top:1px solid var(--line);font-size:12px;color:#4A463D;line-height:1.5}
 footer b{font-family:"Barlow Condensed",sans-serif;letter-spacing:.06em;color:var(--ink)}
 .apagar{display:block;text-align:center;margin:18px 0 0;font-size:13px;color:var(--muted)}
-#autotest-out{display:none}
 </style>
 </head>
 <body>
@@ -236,7 +235,6 @@ footer b{font-family:"Barlow Condensed",sans-serif;letter-spacing:.06em;color:va
 </div>
 
 <div id="overlay"><div class="spin"></div><div id="ov-msg">Montando a ficha…</div></div>
-<pre id="autotest-out"></pre>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js';document.head.appendChild(s)"></script>
 <script>
@@ -254,7 +252,6 @@ var DOCS=[['doc_estatuto','Estatuto Social','Documento completo, com todas as p�
           ['doc_logomarca','Logomarca da associação','Imagem em boa qualidade (PNG ou JPG).']];
 var files={}, step=1, sigDirty=false, pdfBytes=null, pdfName='', drawing=false;
 DOCS.forEach(function(d){files[d[0]]=[]});
-var AUTOTEST=/[?&]autotest=1/.test(location.search);
 
 /* ---------- pessoas e documentos (montados por codigo) ---------- */
 $('#pessoas').innerHTML=PESSOAS.map(function(p,i){var k=p[0];
@@ -401,22 +398,6 @@ $('#btn-share').addEventListener('click',function(){var file=new File([pdfBytes]
 restore();
 if(!$('[name=assinatura_data]').value){var d=new Date();$('[name=assinatura_data]').value=('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear()}
 go(step);
-
-/* ---------- teste automatico (?autotest=1) — dados ficticios, nada real ---------- */
-if(AUTOTEST){(function(){function v(n,val){var el=document.querySelector('[name="'+n+'"]');if(el)el.value=val}
-  v('cnpj','12.345.678/0001-90');v('nome_associacao','Associação Teste dos Transportadores');v('data_fundacao','05/03/2010');v('data_filiacao','18/09/2026');v('cep','09720-375');v('endereco','Rua de Teste, 100');v('bairro','Centro');v('cidade','São Bernardo do Campo');v('estado','SP');v('telefone','(11) 90000-0001');v('email','teste@exemplo.com.br');v('qtd_placas','128');v('qtd_associados','96');
-  ['formato_rateio','possui_taxa_adesao','possui_fundo_reserva','aceite_termo'].forEach(function(n){document.querySelector('[name="'+n+'"]').checked=true});document.querySelector('[name=trc][value=sim]').checked=true;v('trc_quantos','4');
-  v('responsavel_nome','Maria de Teste da Silva');v('responsavel_cargo','Secretária');v('responsavel_telefone','(11) 90000-0002');v('responsavel_email','maria@exemplo.com.br');v('mandato_inicio','01/01/2025');v('mandato_termino','31/12/2028');
-  PESSOAS.forEach(function(p,i){v(p[0]+'_nome','Diretor Teste '+(i+1));v(p[0]+'_nascimento','1'+i+'/0'+(i+1)+'/197'+i);v(p[0]+'_telefone','(11) 90000-001'+i);v(p[0]+'_email','diretor'+(i+1)+'@exemplo.com.br')});
-  v('assinatura_nome','Diretor Teste 1');
-  go(5);setTimeout(function(){sizeCanvas();ctx.beginPath();for(var i=0;i<60;i++){var x=30+i*4,y=100+Math.sin(i/4)*30;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.stroke();sigDirty=true;
-    var c=document.createElement('canvas');c.width=1200;c.height=800;var x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,1200,800);x.fillStyle='#222';x.font='48px sans-serif';x.fillText('DOCUMENTO DE TESTE (foto)',80,400);
-    c.toBlob(function(b){files.doc_cnpj.push(new File([b],'cartao-cnpj-teste.jpg',{type:'image/jpeg'}));
-      var L=window.PDFLib;L.PDFDocument.create().then(function(t){var f;return t.embedFont(L.StandardFonts.Helvetica).then(function(ff){f=ff;[1,2,3].forEach(function(n){var p=t.addPage([595,842]);p.drawText('ESTATUTO DE TESTE - pagina '+n,{x:60,y:760,size:20,font:f})});return t.save()})})
-      .then(function(bytes){files.doc_estatuto.push(new File([bytes],'estatuto-teste.pdf',{type:'application/pdf'}));return gerar()})
-      .then(function(relat){var b64='';var u=new Uint8Array(pdfBytes);for(var i=0;i<u.length;i+=0x8000)b64+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));
-        $('#autotest-out').textContent=JSON.stringify({ok:!!relat,relat:relat,nome:pdfName,tamanho:pdfBytes.length,b64:btoa(b64)});document.title='AUTOTEST-DONE'})
-      .catch(function(e){$('#autotest-out').textContent=JSON.stringify({ok:false,erro:String(e&&e.stack||e)});document.title='AUTOTEST-FAIL'})},'image/jpeg',0.85)},700)})()}
 })();
 </script>
 </body>
